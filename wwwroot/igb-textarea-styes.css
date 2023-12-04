@@ -1,0 +1,19 @@
+﻿textarea {
+    outline: none;
+    font-size: 16px;
+    border: 1px solid var(--ig-input-border-color, hsla(var(--ig-gray-400), var(--ig-gray-a)));
+    border-radius: var(--ig-input-border-border-radius, clamp(0rem, calc(var(--ig-radius-factor, 0.2) * 1.25rem), 1.25rem));
+    padding: 6px 12px;
+    transition: box-shadow 0.15s ease-out 0s, border 0.15s ease-out 0s, -webkit-box-shadow 0.15s ease-out 0s;
+}
+
+    textarea:focus {
+        color: var(--ig-input-input-prefix-color--focused, hsla(var(--ig-gray-900), var(--ig-gray-a)));
+        border-color: var(--ig-input-focused-border-color, hsla(var(--ig-primary-500), var(--ig-primary-a)));
+        box-shadow: 0 0 0 0.25rem var(--ig-input-focused-secondary-color, hsla(var(--ig-primary-500), 0.38));
+    }
+
+    textarea[aria-invalid] {
+        border-color: var(--ig-input-error-secondary-color, hsla(var(--ig-error-500), var(--ig-error-a)));
+        box-shadow: 0 0 0 0.25rem var(--ig-input-error-shadow-color, hsla(var(--ig-error-500), 0.38));
+    }

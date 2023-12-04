@@ -1,0 +1,40 @@
+﻿@using System.ComponentModel.DataAnnotations
+@inject IJSRuntime JSRuntime
+
+<div style="max-width:600px; margin:24px auto;">
+
+    <EditForm Model="_editItem" OnValidSubmit="OnValidSubmit" style="display:flex; flex-direction:column; gap:24px;">
+        <DataAnnotationsValidator />
+
+        <div style="display:flex; flex-direction:column; gap:8px;">
+
+            <textarea @bind="_editItem.Text" aria-invalid="@(!context.IsValid(() => _editItem.Text))" rows="3" autofocus>
+            </textarea>
+
+            <ValidationMessage For="@(() => _editItem.Text)" />
+
+        </div>
+
+        <IgbButton DisplayType="ButtonBaseType.Submit">
+            送信
+        </IgbButton>
+    </EditForm>
+
+</div>
+
+@code
+{
+    private class EditItem
+    {
+        [Required(ErrorMessage = "テキストを入力してください。")]
+        public string Text { get; set; } = "";
+    }
+
+    private EditItem _editItem = new();
+
+    private async Task OnValidSubmit()
+    {
+        await Task.Delay(100);
+        await JSRuntime.InvokeVoidAsync("alert", $"入力内容: \"{_editItem.Text}\"");
+    }
+}
